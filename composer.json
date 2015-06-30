@@ -3,7 +3,8 @@
     "description": "Widgets package",
     "keywords": [
         "humweb",
-        "widgets"
+        "widgets",
+        "laravel"
     ],
     "homepage": "https://github.com/humweb/laravel-widgets",
     "license": "MIT",
@@ -16,7 +17,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "humweb/widgets": "dev-master"
     },
     "autoload": {
         "psr-4": {
