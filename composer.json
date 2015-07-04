@@ -1,6 +1,6 @@
 {
-    "name": "humweb/widgets",
-    "description": "Widgets package",
+    "name": "humweb/laravel-widgets",
+    "description": "Laravel Widgets package",
     "keywords": [
         "humweb",
         "widgets",
