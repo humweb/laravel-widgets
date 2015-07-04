@@ -26,8 +26,6 @@ class WidgetsServiceProvider extends ServiceProvider
             return new WidgetFactory();
         });
 
-        $this->app['widgets']->register('testWidget', 'Humweb\LaravelWidgets\View\TestWidget');
-
-
+        $this->app['widgets']->register('bsPanel', 'Humweb\LaravelWidgets\View\BsPanelWidget');
     }
 }

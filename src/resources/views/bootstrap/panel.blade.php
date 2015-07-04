@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading"><h5>
-        @yield('title')
+            {!! $title !== '' ? $title : 'Test Widget' !!}
         </h5></div>
     <div class="panel-body">
-        @yield('body')
+        {!! $body !== '' ? $body : 'Test Widget' !!}
     </div>
 </div>

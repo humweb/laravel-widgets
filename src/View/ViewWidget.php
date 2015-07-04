@@ -7,68 +7,47 @@ use Humweb\Widgets\Widget;
  *
  * @package Humweb\LaravelWidgets\View
  */
-abstract class WidgetView extends Widget
+abstract class ViewWidget extends Widget
 {
 
-    protected $layout = 'laravel-widgets::layouts.default';
+    protected $data = [];
 
 
     /**
-     * Controller constructor.
-     */
-    public function __construct()
-    {
-    }
-
-
-    /**
-     * Show the user profile.
+     * Render widget view
+     *
+     * @param string $view
+     * @param array  $data
+     *
+     * @return string
      */
     public function renderView($view, $data = [])
     {
 
-        $this->setupLayout();
-
-        if ( ! is_null($this->layout)) {
-            return $this->renderLayoutAndView($view, $data);
+        if ($data instanceof Arrayable) {
+            $data = $data->toArray();
         }
+
+        $data = array_merge($this->data, is_array($data) ? $data : []);
 
         return $this->createView($view, $data)->render();
     }
 
 
-    protected function renderLayoutAndView($view, $data = [])
-    {
-        if ($data instanceof Arrayable) {
-            $data = $data->toArray();
-        }
-
-        $data = is_array($data) ? $data : [];
-
-        return $this->layout->nest('child', $view, $data)->render();
-    }
-
-
     /**
-     * Setup the layout used by the widget.
-     */
-    protected function setupLayout()
-    {
-        if ( ! is_null($this->layout)) {
-            $this->layout = $this->createView($this->layout);
-        }
-    }
-
-
-    /**
-     * Setup the layout used by the widget.
+     * Share data with the layout and view used by the widget.
      */
     protected function viewShare($key, $data)
     {
-        view()->share($key, $data);
+        $this->data[$key] = $data;
     }
 
 
+    /**
+     * Set widget title
+     *
+     * @param string $title
+     */
     public function setTitle($title)
     {
         $this->viewShare('title', $title);
