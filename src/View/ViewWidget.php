@@ -13,6 +13,12 @@ abstract class ViewWidget extends Widget
     protected $data = [];
 
 
+    public function render()
+    {
+        return '';
+    }
+
+    
     /**
      * Render widget view
      *
